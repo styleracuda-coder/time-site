@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title id="title"></title>
+
+<meta name="description" id="description">
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+margin-top:100px;
+}
+
+.clock{
+font-size:70px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="city"></h1>
+
+<div class="clock" id="clock"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search)
+
+const city = params.get("city")
+const timezone = params.get("tz")
+
+document.getElementById("city").innerHTML="Current Time in "+city
+document.getElementById("title").innerText="Current Time in "+city
+document.getElementById("description").setAttribute("content","Live time in "+city)
+
+function updateClock(){
+
+const options={
+timeZone:timezone,
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+}
+
+const time=new Intl.DateTimeFormat([],options).format(new Date())
+
+document.getElementById("clock").innerHTML=time
+
+}
+
+setInterval(updateClock,1000)
+
+updateClock()
+
+</script>
+
+</body>
+</html>
