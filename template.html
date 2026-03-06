@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Current Time in CITYNAME</title>
+
+<meta name="description"
+content="Check the current time in CITYNAME. Live local time with date and timezone.">
+
+</head>
+
+<body>
+
+<h1>Current Time in CITYNAME</h1>
+
+<div id="clock" style="font-size:60px;"></div>
+
+<script>
+
+function updateClock(){
+
+const options={
+timeZone:"TIMEZONE",
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+}
+
+const time=new Intl.DateTimeFormat([],options).format(new Date())
+
+document.getElementById("clock").innerHTML=time
+
+}
+
+setInterval(updateClock,1000)
+
+updateClock()
+
+</script>
+
+</body>
+</html>
